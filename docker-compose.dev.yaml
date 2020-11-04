@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+  d-heimdall:
+    image: gcr.io/myContainerRegistry/d-heimdall:latest
+    build:
+      context: .
+      dockerfile: dockerfiles/app.docker.dev
+    env_file: .env
+    container_name: "d-heimdall"
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3011:3000"
+    networks:
+      - default
+      - bridge-network
+networks:
+  default:
+    driver: bridge
+  bridge-network:
+    external: true

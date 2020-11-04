@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  s-heimdall:
+    build:
+      context: .
+      dockerfile: dockerfiles/app.docker
+    container_name: "s-heimdall"
+    env_file: .env
+    image: gcr.io/myContainerRegistry/s-heimdall:latest
+    ports:
+      - "3000:3000"
+    working_dir: /usr/src/app

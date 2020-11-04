@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  p-heimdall:
+    build:
+      context: .
+      dockerfile: dockerfiles/app.docker
+    container_name: "p-heimdall"
+    env_file: .env
+    image: gcr.io/myContainerRegistry/p-heimdall:latest
+    ports:
+      - "3000:3000"
+    working_dir: /usr/src/app
